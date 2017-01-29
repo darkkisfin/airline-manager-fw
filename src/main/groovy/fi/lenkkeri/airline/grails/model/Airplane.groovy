@@ -1,8 +1,11 @@
 package fi.lenkkeri.airline.grails.model
 
+import groovy.transform.ToString
+
 /**
  * Created by darkkis on 15.1.2017.
  */
+@ToString
 class Airplane {
     String serialNumber //man!
     String nickname //man!

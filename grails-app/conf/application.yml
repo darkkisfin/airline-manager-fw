@@ -126,3 +126,6 @@ environments:
                 testOnReturn: false
                 jdbcInterceptors: ConnectionState
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
+
+fi.lenkkeri.grails.json.baseurl = "http://localhost:8080/airline-external/api/json/"
+fi.lenkkeri.grails.xml.baseurl = "http://localhost:8080/airline-external/api/xml/"
