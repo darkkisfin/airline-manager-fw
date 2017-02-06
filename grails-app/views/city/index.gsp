@@ -11,8 +11,14 @@
             <ul>
                 <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
                 <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+                <li><g:message code="default.list.search"/></li><!-- man! -->
+                <li><g:form name="findCity" action="findCity" method="GET"><!-- man! -->
+                    <g:field type="text" name="text" required="" value="${text}"/><!-- man! -->
+                </g:form></li><!-- man! -->
+                <li><g:link class="city"><input type="button" value="Nollaa"/></g:link></li><!-- man! -->
             </ul>
         </div>
+
         <div id="list-city" class="content scaffold-list" role="main">
             <h1><g:message code="default.list.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">

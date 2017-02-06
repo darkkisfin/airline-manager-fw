@@ -8,6 +8,23 @@ class CityController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    def findCity(String text, Integer max, Integer offset) //man!
+    {
+        println params
+        params.max = Math.min(max?:10, 100) //man!
+        params.offset = offset?:0 //man!
+        def cities = City.createCriteria().list([max:max, offset:offset]) { //man!
+            eq("hidden", false) //man!
+            or { //man!
+                like("cityName", "%$text%") //man!
+                like("countryName", "%$text%") //man!
+                like("airfieldName", "%$text%") //man!
+            }
+            if(params.sort)order(params.sort, params.order)
+        }
+        respond cities, model:[cityCount:cities.totalCount], view: "index" //man!
+    }
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         def cities = City.findAllByHidden(false, params) //man!

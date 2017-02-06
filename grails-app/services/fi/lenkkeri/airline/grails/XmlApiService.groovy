@@ -15,7 +15,7 @@ class XmlApiService {
     List<Pilot> findPilot(String firstName, String lastName) {    //man!
         List<Pilot> foundPilots = []    //man!
         def uploadableData = ["firstName":firstName, "lastName":lastName]    //man!
-        def http = new HTTPBuilder( grailsApplication.config.getProperty("fi.lenkkeri.grails.xml.baseurl")+"findPerson" )    //man!
+        def http = new HTTPBuilder( grailsApplication.config.getProperty("fi.lenkkeri.grails.xml.baseurl").toString()+"findPerson" )    //man!
         http.request( POST, XML ) { req ->    //man!
             body = uploadableData    //man!
             response.success = { resp, xml ->    //man!
