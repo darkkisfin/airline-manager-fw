@@ -6,6 +6,50 @@
         <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>
     <body>
+        <script type="text/javascript"><!-- man -->
+                $(document).ready(function(){<!-- man -->
+                    $('#getPilot').click(function(){<!-- man -->
+                        var URL="${createLink(controller:'flight',action:'getPilots')}";<!-- man -->
+
+                        $.ajax({<!-- man -->
+                            url:URL,<!-- man -->
+                            data: {firstName:$("#searchPilotFirstName").value, lastName:$("#searchPilotLastName").value},<!-- man -->
+                            success: function(resp){
+                                console.log(resp);<!-- man -->
+                                resp.forEach(function(pilot){<!-- man -->
+                                    console.log("Pilot: " + pilot);<!-- man -->
+                                    console.log("Pilot JSON " + JSON.stringify(pilot));<!-- man -->
+                                    $('#pilots').append($("<option></option>").attr("value",pilot.firstName + " " +pilot.lastName).text(pilot.firstName + " " +pilot.lastName));<!-- man -->
+                                    $('#pilots').trigger("chosen:updated");<!-- man -->
+                                });
+                            }
+                        });
+                    });
+                });
+        </script><!-- man -->
+        <script type="text/javascript"><!-- man -->
+            $(document).ready(function(){<!-- man -->
+                $('#getAirplane').click(function(){<!-- man -->
+                    var URL="${createLink(controller:'flight',action:'getAirplanes')}";<!-- man -->
+                    $("#planes").innerHtml = ''<!-- man -->
+
+                    $.ajax({<!-- man -->
+                        url:URL,<!-- man -->
+                        data: {serialNumber:$("#searchPlaneSN").value},<!-- man -->
+                        success: function(resp){<!-- man -->
+                            console.log(resp);<!-- man -->
+
+                            resp.forEach(function(plane){<!-- man -->
+                                console.log("Plane: " + plane);<!-- man -->
+                                console.log("Plane JSON " + JSON.stringify(plane));<!-- man -->
+                                $('#planes').append($("<option></option>").attr("value",plane.serialNumber).text(plane.serialNumber));<!-- man -->
+                                $('#planes').trigger("chosen:updated");<!-- man -->
+                            });
+                        }
+                    });
+                 });
+            });
+        </script><!-- man -->
         <a href="#create-flight" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
         <div class="nav" role="navigation">
             <ul>
@@ -34,5 +78,22 @@
                 </fieldset>
             </g:form>
         </div>
+        <div id="get-plane"><!-- man -->
+            <input type="text" id="searchPlaneSN"></input><!-- man -->
+            <button id="getAirplane">Hae</button><!-- man -->
+            <select id="planes"/><!-- man -->
+        </div><!-- man -->
+        <div id="get-pilot"><!-- man -->
+            <input type="text" id="searchPilotFirstName"></input><!-- man -->
+            <input type="text" id="searchPilotLastName"></input><!-- man -->
+            <button id="getPilot">Hae</button><!-- man -->
+            <select id="pilots"/><!-- man -->
+        </div><!-- man -->
+        <div id="get-copilot"><!-- man -->
+            <input type="text" id="searchPilotFirstName"></input><!-- man -->
+            <input type="text" id="searchPilotLastName"></input><!-- man -->
+            <button id="getPilot">Hae</button><!-- man -->
+            <select id="copilots"/><!-- man -->
+        </div><!-- man -->
     </body>
 </html>

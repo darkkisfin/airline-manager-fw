@@ -20,7 +20,7 @@ class CityController {
                 like("countryName", "%$text%") //man!
                 like("airfieldName", "%$text%") //man!
             }
-            if(params.sort)order(params.sort, params.order)
+            if(params.sort)order(params.sort, params.order) //man!
         }
         respond cities, model:[cityCount:cities.totalCount], view: "index" //man!
     }

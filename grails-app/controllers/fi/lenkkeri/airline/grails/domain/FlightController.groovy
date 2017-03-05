@@ -1,10 +1,16 @@
 package fi.lenkkeri.airline.grails.domain
 
 import static org.springframework.http.HttpStatus.*
+import fi.lenkkeri.airline.grails.model.*
+import grails.converters.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class FlightController {
+
+    def jsonApiService
+    def xmlApiService
+    def soapService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -19,6 +25,18 @@ class FlightController {
 
     def create() {
         respond new Flight(params)
+    }
+
+    def getAirplanes(String serialNumber) { //man!
+        def airplanes //UNCOMMENT WHEN SOAP GENERATED= soapService.findPlanes() //man!
+        Airplane plane = [serialNumber:"111"] //REMOVE WHEN DONE
+        airplanes = [plane] //REMOVE WHEN DONE
+        render airplanes as JSON //man!
+    }
+
+    def getPilots(String firstName, String lastName) { //man!
+        def pilots = xmlApiService.findPilot(firstName, lastName) //man!
+        render pilots as JSON //man!
     }
 
     @Transactional

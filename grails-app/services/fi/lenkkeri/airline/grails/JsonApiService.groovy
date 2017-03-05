@@ -14,6 +14,11 @@ class JsonApiService {
         def uploadableData = airplane.properties    //man!
         uploadableData.remove("id")    //man!
         def http = new HTTPBuilder( grailsApplication.config.getProperty("fi.lenkkeri.grails.json.baseurl").toString()+"addPlane" )    //man!
+
+        http.handler.failure = { resp ->    //man!
+            log.error "Unexpected failure: ${resp.statusLine}"    //man!
+        }
+
         http.request( POST, JSON ) { req ->    //man!
             body = uploadableData    //man!
             response.success = { resp, json ->    //man!
