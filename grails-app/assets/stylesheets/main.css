@@ -572,3 +572,40 @@ img.grails-logo {
     height:340px;
     margin-top:-10px;
 }
+
+.findPlaneDiv {
+    z-index:1;
+    position:absolute;
+    display:none;
+    background-color:white;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    width: 300px;
+    height: 500px;
+}
+.findPilotDiv {
+    z-index:1;
+    position:absolute;
+    display:none;
+    background-color:white;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    width: 300px;
+    height: 500px;
+}
+.findCoPilotDiv {
+    z-index:1;
+    position:absolute;
+    display:none;
+    background-color:white;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    width: 300px;
+    height: 500px;
+}

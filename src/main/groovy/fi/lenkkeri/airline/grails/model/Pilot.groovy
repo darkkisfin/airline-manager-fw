@@ -7,6 +7,7 @@ import groovy.transform.ToString
  */
 @ToString //man!
 class Pilot {
+    String id //man!
     String firstName //man!
     String lastName //man!
     String middleName //man!
