@@ -40,7 +40,7 @@ class XmlApiService {
                 {
                     xml?.entry?.find {it.@key=='data'}?.pilotData?.each { pilotXml ->   //man!
                         def pilotMap = convertToMap(pilotXml)    //man!
-                        Pilot pilot = [firstName:pilotMap?.firstName, lastName:pilotMap?.lastName, middleName:pilotMap?.middleName, birthDate:Date.parse("yyyy-MM-dd HH:mm:ss.S", pilotMap?.birthDate), enteredEmployment:Date.parse("yyyy-MM-dd HH:mm:ss.S", pilotMap?.enteredEmployment), callsign:pilotMap?.callsign]   //man!
+                        Pilot pilot = [id: pilotXml.@id,firstName:pilotMap?.firstName, lastName:pilotMap?.lastName, middleName:pilotMap?.middleName, birthDate:Date.parse("yyyy-MM-dd HH:mm:ss.S", pilotMap?.birthDate), enteredEmployment:Date.parse("yyyy-MM-dd HH:mm:ss.S", pilotMap?.enteredEmployment), callsign:pilotMap?.callsign]   //man!
                         foundPilots.add(pilot)  //man!
                     }
                 }
