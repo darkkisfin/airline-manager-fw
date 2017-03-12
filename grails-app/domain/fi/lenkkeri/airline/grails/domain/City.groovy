@@ -10,4 +10,9 @@ class City {
 
     static constraints = {
     }
+
+    public String toString()
+    {
+        return "$countryName, $cityName, $airfieldName"
+    }
 }

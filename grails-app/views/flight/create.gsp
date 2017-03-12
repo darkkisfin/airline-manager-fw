@@ -115,7 +115,20 @@
             </g:hasErrors>
             <g:form action="save">
                 <fieldset class="form">
-                    <f:all bean="flight"/>
+                    <f:field bean="flight" property="origin"><!-- man -->
+                        <g:select name="origin" from="${cityInstanceList}" optionKey="id"/><!-- man -->
+                    </f:field><!-- man -->
+                    <f:field bean="flight" property="destination"><!-- man -->
+                        <g:select name="destination" from="${cityInstanceList}" optionKey="id"/><!-- man -->
+                    </f:field><!-- man -->
+                    <f:field bean="flight" property="pilotId"/><!-- man -->
+                    <f:field bean="flight" property="pilotName"/><!-- man -->
+                    <f:field bean="flight" property="copilotId"/><!-- man -->
+                    <f:field bean="flight" property="copilotName"/><!-- man -->
+                    <f:field bean="flight" property="airplaneId"/><!-- man -->
+                    <f:field bean="flight" property="airplaneNickname"/><!-- man -->
+
+
                     <button type="button" id="openPlane">Valitse lentokone</button><!-- man -->
                     <button type="button" id="openPilot">Valitse lentäjä</button><!-- man -->
                     <button type="button" id="openCoPilot">Valitse perämies</button><!-- man -->

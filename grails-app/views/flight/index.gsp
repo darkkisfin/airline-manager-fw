@@ -11,6 +11,11 @@
             <ul>
                 <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
                 <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+                <li><g:message code="default.list.search"/></li><!-- man! -->
+                <li><g:form name="findFlights" action="findFlights" method="GET"><!-- man! -->
+                    <g:field type="text" name="text" required="" value="${text}"/><!-- man! -->
+                </g:form></li><!-- man! -->
+                <li><g:link class="flight"><input type="button" value="Nollaa"/></g:link></li><!-- man! -->
             </ul>
         </div>
         <div id="list-flight" class="content scaffold-list" role="main">
@@ -18,7 +23,7 @@
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:table collection="${flightList}" />
+            <f:table collection="${flightList}"  properties="['origin', 'destination', 'pilotName', 'airplaneId']" />
 
             <div class="pagination">
                 <g:paginate total="${flightCount ?: 0}" />

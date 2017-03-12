@@ -10,7 +10,6 @@ class CityController {
 
     def findCity(String text, Integer max, Integer offset) //man!
     {
-        println params
         params.max = Math.min(max?:10, 100) //man!
         params.offset = offset?:0 //man!
         def cities = City.createCriteria().list([max:max, offset:offset]) { //man!

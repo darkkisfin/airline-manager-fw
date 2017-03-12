@@ -129,3 +129,14 @@ environments:
 
 fi.lenkkeri.grails.json.baseurl: "http://localhost:8090/airline-external/api/json/"
 fi.lenkkeri.grails.xml.baseurl: "http://localhost:8090/airline-external/api/xml/"
+
+cxf :
+    client :
+        planeDataService :
+            wsdl: wsdl/rajapinta.wsdl
+            outputDir: src/main/java
+            clientInterface: "fi.lenkkeri.external.equipment.PlaneDataService"
+            serviceEndpointAddress: http://localhost:8090/airline-external/services/planedata
+            wsdlArgs: ['-autoNameResolution', '-frontend', 'jaxws21']
+
+

@@ -16,6 +16,9 @@ class BootStrap {
 
         City neljasCity = [cityName:"D-Kaupunki", countryName:"C-Maa", airfieldName:"C-Lentokenttä 1"]
         neljasCity.save(flush:true)
+
+        City piilossa = [cityName:"Piilossa", countryName:"Olematon", airfieldName:"AAAAAAA", hidden:true]
+        piilossa.save(flush:true)
     }
     def destroy = {
     }

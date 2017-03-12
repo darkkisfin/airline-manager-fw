@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://equipment.external.lenkkeri.fi/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="PlaneDataServiceService" targetNamespace="http://equipment.external.lenkkeri.fi/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://equipment.external.lenkkeri.fi/" elementFormDefault="unqualified" targetNamespace="http://equipment.external.lenkkeri.fi/" version="1.0">
+
+  <xs:element name="findPlaneBySN" type="tns:findPlaneBySN"/>
+
+  <xs:element name="findPlaneBySNResponse" type="tns:findPlaneBySNResponse"/>
+
+  <xs:element name="findPlanesByType" type="tns:findPlanesByType"/>
+
+  <xs:element name="findPlanesByTypeResponse" type="tns:findPlanesByTypeResponse"/>
+
+  <xs:element name="listAllPlanes" type="tns:listAllPlanes"/>
+
+  <xs:element name="listAllPlanesResponse" type="tns:listAllPlanesResponse"/>
+
+  <xs:complexType name="listAllPlanes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="max" type="xs:int"/>
+      <xs:element minOccurs="0" name="offset" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="listAllPlanesResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="planeData" type="tns:planeData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="planeData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="serialNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="nickname" type="xs:string"/>
+      <xs:element minOccurs="0" name="type" type="xs:string"/>
+      <xs:element minOccurs="0" name="manufactured" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="acquired" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="lastMaintenance" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="length" type="xs:double"/>
+      <xs:element minOccurs="0" name="width" type="xs:double"/>
+      <xs:element minOccurs="0" name="weight" type="xs:double"/>
+      <xs:element minOccurs="0" name="crewRequired" type="xs:long"/>
+      <xs:element minOccurs="0" name="seatCount" type="xs:long"/>
+      <xs:element minOccurs="0" name="fuelCapacity" type="xs:double"/>
+      <xs:element minOccurs="0" name="nominalRange" type="xs:double"/>
+      <xs:element minOccurs="0" name="maximumRange" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findPlaneBySN">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="serialNumber" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findPlaneBySNResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="planeData" type="tns:planeData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findPlanesByType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="type" type="xs:string"/>
+      <xs:element minOccurs="0" name="max" type="xs:int"/>
+      <xs:element minOccurs="0" name="offset" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findPlanesByTypeResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="planeData" type="tns:planeData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="findPlaneBySN">
+    <wsdl:part element="tns:findPlaneBySN" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listAllPlanes">
+    <wsdl:part element="tns:listAllPlanes" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listAllPlanesResponse">
+    <wsdl:part element="tns:listAllPlanesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findPlaneBySNResponse">
+    <wsdl:part element="tns:findPlaneBySNResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findPlanesByType">
+    <wsdl:part element="tns:findPlanesByType" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findPlanesByTypeResponse">
+    <wsdl:part element="tns:findPlanesByTypeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="PlaneDataService">
+    <wsdl:operation name="listAllPlanes">
+      <wsdl:input message="tns:listAllPlanes" name="listAllPlanes">
+    </wsdl:input>
+      <wsdl:output message="tns:listAllPlanesResponse" name="listAllPlanesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPlaneBySN">
+      <wsdl:input message="tns:findPlaneBySN" name="findPlaneBySN">
+    </wsdl:input>
+      <wsdl:output message="tns:findPlaneBySNResponse" name="findPlaneBySNResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPlanesByType">
+      <wsdl:input message="tns:findPlanesByType" name="findPlanesByType">
+    </wsdl:input>
+      <wsdl:output message="tns:findPlanesByTypeResponse" name="findPlanesByTypeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PlaneDataServiceServiceSoapBinding" type="tns:PlaneDataService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="listAllPlanes">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="listAllPlanes">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listAllPlanesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPlaneBySN">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findPlaneBySN">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findPlaneBySNResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPlanesByType">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findPlanesByType">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findPlanesByTypeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PlaneDataServiceService">
+    <wsdl:port binding="tns:PlaneDataServiceServiceSoapBinding" name="PlaneDataServicePort">
+      <soap:address location="http://localhost:8090/airline-external/services/planedata"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

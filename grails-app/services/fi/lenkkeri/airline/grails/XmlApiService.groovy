@@ -18,7 +18,6 @@ class XmlApiService {
     //man!
     List<Pilot> findPilot(String gfirstName, String glastName) {    //man!
         List<Pilot> foundPilots = []    //man!
-        println "Searching for $gfirstName and $glastName"    //man!
 
         def http = new HTTPBuilder( grailsApplication.config.getProperty("fi.lenkkeri.grails.xml.baseurl").toString()+"findPerson" )    //man!
 

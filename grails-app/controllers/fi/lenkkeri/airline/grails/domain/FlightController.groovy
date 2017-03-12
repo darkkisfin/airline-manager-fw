@@ -10,7 +10,7 @@ class FlightController {
 
     def jsonApiService
     def xmlApiService
-    def soapService
+    def planeDataService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -24,19 +24,38 @@ class FlightController {
     }
 
     def create() {
-        respond new Flight(params)
+        respond new Flight(params), model:[cityInstanceList:City.findAllByHidden(false)] //man!
     }
 
     def getAirplanes(String serialNumber) { //man!
-        def airplanes //UNCOMMENT WHEN SOAP GENERATED= soapService.findPlanes() //man!
-        Airplane plane = [serialNumber:"111"] //REMOVE WHEN DONE
-        airplanes = [plane] //REMOVE WHEN DONE
+        def airplanes = planeDataService.findPlaneBySN(serialNumber) //man!
+        //Airplane plane = [serialNumber:"111"] //REMOVE WHEN DONE
+        //airplanes = [plane] //REMOVE WHEN DONE
         render airplanes as JSON //man!
     }
 
     def getPilots(String firstName, String lastName) { //man!
         def pilots = xmlApiService.findPilot(firstName, lastName) //man!
         render pilots as JSON //man!
+    }
+
+    def findFlights(String text, Integer max, Integer offset){
+        params.max = Math.min(max?:10, 100) //man!
+        params.offset = offset?:0 //man!
+        def flights = Flight.createCriteria().list([max:max, offset:offset]) { //man!
+            or { //man!
+                like("pilotName", "%$text%") //man!
+                like("copilotName", "%$text%") //man!
+                origin { //man!
+                    like("airfieldName", "%$text%") //man!
+                }
+                destination { //man!
+                    like("airfieldName", "%$text%") //man!
+                }
+            }
+            if(params.sort)order(params.sort, params.order) //man!
+        }
+        respond flights, model:[flightCount:flights.totalCount], view: "index" //man!
     }
 
     @Transactional
@@ -65,7 +84,7 @@ class FlightController {
     }
 
     def edit(Flight flight) {
-        respond flight
+        respond flight, model:[cityInstanceList:City.findAllByHidden(false)] //man!
     }
 
     @Transactional
