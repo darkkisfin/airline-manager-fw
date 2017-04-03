@@ -8,9 +8,9 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class FlightController {
 
-    def jsonApiService
-    def xmlApiService
-    def planeDataService
+    def jsonApiService //man!
+    def xmlApiService //man!
+    def planeDataService //man!
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 

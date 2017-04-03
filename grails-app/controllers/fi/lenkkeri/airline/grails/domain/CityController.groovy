@@ -38,14 +38,6 @@ class CityController {
         respond new City(params)
     }
 
-    def find(String name, Integer max) { //man!
-        params.max = Math.min(max ?: 10, 100) //man!
-        def cities = City.findAll() { //man!
-            hidden == false && ( cityName?.contains(name) || countryName?.contains(name) || airfieldName?.contains(name)) //man!
-        }
-        respond cities, model:[cityCount: cities?.size()] //man!
-    }
-
     @Transactional
     def save(City city) {
         if (city == null) {
