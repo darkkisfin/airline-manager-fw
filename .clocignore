@@ -1,0 +1,10 @@
+grailsw.bat
+grailsw
+grails-wrapper.jar
+.gitignore
+gradlew.bat
+gradlew
+.git
+.gradle
+.idea
+build
