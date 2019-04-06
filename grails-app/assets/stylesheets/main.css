@@ -573,39 +573,51 @@ img.grails-logo {
     margin-top:-10px;
 }
 
-.findPlaneDiv {
-    z-index:1;
-    position:absolute;
-    display:none;
-    background-color:white;
-    top: 50%;
-    left: 50%;
-    margin-top: -50px;
-    margin-left: -50px;
-    width: 300px;
-    height: 500px;
+.findPlaneDiv { /* man! */
+    z-index:1; /* man! */
+    position:absolute; /* man! */
+    display:none; /* man! */
+    background-color:white; /* man! */
+    top: 50%; /* man! */
+    left: 50%; /* man! */
+    margin-top: -50px; /* man! */
+    margin-left: -50px; /* man! */
+    width: 300px; /* man! */
+    height: 500px; /* man! */
 }
-.findPilotDiv {
-    z-index:1;
-    position:absolute;
-    display:none;
-    background-color:white;
-    top: 50%;
-    left: 50%;
-    margin-top: -50px;
-    margin-left: -50px;
-    width: 300px;
-    height: 500px;
+.findPilotDiv { /* man! */
+    z-index:1; /* man! */
+    position:absolute; /* man! */
+    display:none; /* man! */
+    background-color:white; /* man! */
+    top: 50%; /* man! */
+    left: 50%; /* man! */
+    margin-top: -50px; /* man! */
+    margin-left: -50px; /* man! */
+    width: 300px; /* man! */
+    height: 500px; /* man! */
 }
-.findCoPilotDiv {
-    z-index:1;
-    position:absolute;
-    display:none;
-    background-color:white;
-    top: 50%;
-    left: 50%;
-    margin-top: -50px;
-    margin-left: -50px;
-    width: 300px;
-    height: 500px;
+.findCoPilotDiv { /* man! */
+    z-index:1; /* man! */
+    position:absolute; /* man! */
+    display:none; /* man! */
+    background-color:white; /* man! */
+    top: 50%; /* man! */
+    left: 50%; /* man! */
+    margin-top: -50px; /* man! */
+    margin-left: -50px; /* man! */
+    width: 300px; /* man! */
+    height: 500px; /* man! */
+}
+.findReservePilotDiv { /* man! */
+    z-index:1; /* man! */
+    position:absolute; /* man! */
+    display:none; /* man! */
+    background-color:white; /* man! */
+    top: 50%; /* man! */
+    left: 50%; /* man! */
+    margin-top: -50px; /* man! */
+    margin-left: -50px; /* man! */
+    width: 300px; /* man! */
+    height: 500px; /* man! */
 }

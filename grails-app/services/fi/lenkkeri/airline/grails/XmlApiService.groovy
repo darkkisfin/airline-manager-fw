@@ -1,7 +1,6 @@
 package fi.lenkkeri.airline.grails
 
-import fi.lenkkeri.airline.grails.model.Airplane
-import fi.lenkkeri.airline.grails.model.Pilot
+import fi.lenkkeri.airline.grails.model.Pilot//man!
 import grails.core.GrailsApplication
 import grails.transaction.Transactional
 import groovy.xml.MarkupBuilder

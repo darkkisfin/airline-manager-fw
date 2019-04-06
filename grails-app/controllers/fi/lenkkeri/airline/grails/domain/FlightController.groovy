@@ -49,6 +49,9 @@ class FlightController {
                 origin { //man!
                     like("airfieldName", "%$text%") //man!
                 }
+                stopPoint { //man!
+                    like("airfieldName", "%$text%") //man!
+                }
                 destination { //man!
                     like("airfieldName", "%$text%") //man!
                 }

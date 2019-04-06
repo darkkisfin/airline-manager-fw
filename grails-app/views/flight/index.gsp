@@ -23,7 +23,7 @@
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:table collection="${flightList}"  properties="['origin', 'destination', 'pilotName', 'airplaneId']" />
+            <f:table collection="${flightList}"  properties="['origin', 'destination', 'stopPoint', 'pilotName', 'airplaneId']" /><!-- man! -->
 
             <div class="pagination">
                 <g:paginate total="${flightCount ?: 0}" />

@@ -17,6 +17,9 @@
                 $('#openCoPilot').click(function(){<!-- man -->
                     $('#getcopilot').toggle();<!-- man -->
                 });
+                $('#openReservePilot').click(function(){<!-- man -->
+                    $('#getreservepilot').toggle();<!-- man -->
+                });
                 $('#getPilot').click(function(){<!-- man -->
                     var URL="${createLink(controller:'flight',action:'getPilots')}";<!-- man -->
                     $.ajax({<!-- man -->
@@ -48,6 +51,23 @@
                                     $('#copilots').trigger("chosen:updated");<!-- man -->
                                 });
                             }
+                    });
+                });
+                $('#getReservePilot').click(function(){<!-- man -->
+                    var URL="${createLink(controller:'flight',action:'getPilots')}";<!-- man -->
+
+                    $.ajax({<!-- man -->
+                        url:URL,<!-- man -->
+                        data: {firstName:$("#searchReservePilotFirstName").val(), lastName:$("#searchReservePilotLastName").val()},<!-- man -->
+                        success: function(resp){
+                            console.log(resp);<!-- man -->
+                            resp.forEach(function(pilot){<!-- man -->
+                                console.log("Pilot: " + pilot);<!-- man -->
+                                console.log("Pilot JSON " + JSON.stringify(pilot));<!-- man -->
+                                $('#reservepilots').append($("<option></option>").attr("value",pilot.id+","+pilot.firstName + "," +pilot.lastName).text(pilot.firstName + " " +pilot.lastName));<!-- man -->
+                                $('#reservepilots').trigger("chosen:updated");<!-- man -->
+                            });
+                        }
                     });
                 });
                 $('#getAirplane').click(function(){<!-- man -->
@@ -92,6 +112,14 @@
                     $('#copilotName').val(split[1] + " " + split[2]);
                     $('#getcopilot').toggle();<!-- man -->
                 });
+
+                $('#selectReservePilot').click(function(){
+                    var selectedValue = $('#reservepilots').find(":selected").val();
+                    var split = selectedValue.split(",");
+                    $('#reservePilotId').val(split[0]);
+                    $('#reservePilotName').val(split[1] + " " + split[2]);
+                    $('#getreservepilot').toggle();<!-- man -->
+                });
             });
         </script><!-- man -->
         <a href="#edit-flight" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -123,17 +151,23 @@
                     <f:field bean="flight" property="destination"><!-- man -->
                         <g:select name="destination" from="${cityInstanceList}" optionKey="id"/><!-- man -->
                     </f:field><!-- man -->
+                    <f:field bean="flight" property="stopPoint"><!-- man -->
+                        <g:select name="stopPoint" from="${cityInstanceList}" noSelection="${['null':'Ei välilaskua']}" optionKey="id"/><!-- man -->
+                    </f:field><!-- man -->
                     <f:field bean="flight" property="pilotId"/><!-- man -->
                     <f:field bean="flight" property="pilotName"/><!-- man -->
                     <f:field bean="flight" property="copilotId"/><!-- man -->
                     <f:field bean="flight" property="copilotName"/><!-- man -->
                     <f:field bean="flight" property="airplaneId"/><!-- man -->
                     <f:field bean="flight" property="airplaneNickname"/><!-- man -->
+                    <f:field bean="flight" property="reservePilotId"/><!-- man -->
+                    <f:field bean="flight" property="reservePilotName"/><!-- man -->
 
 
                     <button type="button" id="openPlane">Valitse lentokone</button><!-- man -->
                     <button type="button" id="openPilot">Valitse lentäjä</button><!-- man -->
                     <button type="button" id="openCoPilot">Valitse perämies</button><!-- man -->
+                    <button type="button" id="openReservePilot">Valitse varalentäjä</button><!-- man -->
                 </fieldset>
                 <fieldset class="buttons">
                     <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />
@@ -164,6 +198,15 @@
             <button id="getCoPilot">Hae</button><br/><!-- man -->
             <select id="copilots"></select><br/><!-- man -->
             <button id="selectCoPilot">Aseta</button><br/><!-- man -->
+        </div><!-- man -->
+
+        <div id="getreservepilot" class="findReservePilotDiv" role="dialog"><!-- man -->
+            Hae varalentäjä<br/><!-- man -->
+            <input type="text" id="searchReservePilotFirstName"></input><br/><!-- man -->
+            <input type="text" id="searchReservePilotLastName"></input><br/><!-- man -->
+            <button id="getReservePilot">Hae</button><br/><!-- man -->
+            <select id="reservepilots"></select><br/><!-- man -->
+            <button id="selectReservePilot">Aseta</button><br/><!-- man -->
         </div><!-- man -->
     </body>
 </html>

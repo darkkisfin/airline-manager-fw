@@ -1,11 +1,5 @@
-package fi.lenkkeri.airline.grails.model
+package fi.lenkkeri.airline.grails.domain
 
-import groovy.transform.ToString
-
-/**
- * Created by darkkis on 15.1.2017.
- */
-@ToString
 class Airplane {
     String serialNumber //man!
     String nickname //man!
@@ -21,4 +15,6 @@ class Airplane {
     Double fuelCapacity //man!
     Double nominalRange //man!
     Double maximumRange //man!
+    static constraints = {
+    }
 }

@@ -18,6 +18,9 @@
                         <li class="controller"><%-- man! --%>
                             <g:link controller="City">Kaupungit</g:link><%-- man! --%>
                         </li><%-- man! --%>
+                        <li class="controller"><%-- man! --%>
+                            <g:link controller="Airplane">Lentokoneet</g:link><%-- man! --%>
+                        </li><%-- man! --%>
                 </ul>
             </div>
         </section>
